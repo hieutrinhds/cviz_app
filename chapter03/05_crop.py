@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 
 # Load image
-image_path = "images/zebra.png"
+image_path = "images/zebrasmall.png"
 image = cv2.imread(image_path)
 
 cv2.imshow("original image", image)
