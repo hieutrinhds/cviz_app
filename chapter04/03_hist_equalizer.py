@@ -11,10 +11,24 @@ cv2.imshow("Original Image", image)
 hist = cv2.calcHist([image], [0], None, [256], [0, 256])
 
 # Plot histogram
-plot.figure()
+# plot.figure()
 plot.title("Grayscale Histogram")
 plot.xlabel("Bins")
 plot.ylabel("Number of pixels")
 plot.plot(hist)
+plot.show()
+
+equalizedImage = cv2.equalizeHist(image)
+cv2.imshow("Equalized Image", equalizedImage)
+
+# Calculate histogram of the equalized image
+histEqualized = cv2.calcHist([equalizedImage], [0], None, [256], [0, 255])
+
+# Plot histogram graph
+#plot.figure()
+plot.title("Grayscale Histogram of Equalized Image")
+plot.xlabel("Bins")
+plot.ylabel("Number of Pixels")
+plot.plot(histEqualized)
 plot.show()
 cv2.waitKey(0)

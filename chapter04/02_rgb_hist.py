@@ -4,17 +4,18 @@ from matplotlib import pyplot as plot
 
 # Read an image and convert it to grayscale
 image = cv2.imread("images/nature.jpg")
-image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
 cv2.imshow("Original Image", image)
 
+colors = ("blue", "green", "red")
 # Calculate histogram
-hist = cv2.calcHist([image], [0], None, [256], [0, 256])
+for i, color in enumerate(colors):
+    hist = cv2.calcHist([image], [i], None, [32], [0, 256])
+    # Plot histogram graph
+    plot.plot(hist, color=color)
 
-# Plot histogram
-plot.figure()
-plot.title("Grayscale Histogram")
+plot.title("RGB Color Histogram")
 plot.xlabel("Bins")
-plot.ylabel("Number of pixels")
-plot.plot(hist)
+plot.ylabel("Number of Pixels")
 plot.show()
 cv2.waitKey(0)
